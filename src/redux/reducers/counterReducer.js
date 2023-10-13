@@ -1,26 +1,27 @@
-import actionTypes from "../actionTypes";
+import actions from "../actions";
 
-const state = {
+const initialState = {
   initialCounter: 0
 }
 
-const counterReducer = (initialState = state, action) => {
+const counterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.INCREMENT:
+    case actions.counter.INCREMENT: {
       return {
-        ...initialState,
-        initialCounter: initialState.initialCounter + action.payload
+        ...state,
+        initialCounter: state.initialCounter + action.payload
       }
+    }
 
-    case actionTypes.DECREMENT:
+    case actions.counter.DECREMENT: {
       return {
-        ...initialState,
-        initialCounter: initialState.initialCounter - action.payload
+        ...state,
+        initialCounter: state.initialCounter - action.payload
       }
+    }
 
     default:
       return state
   }
 }
-
 export default counterReducer
